@@ -17,7 +17,7 @@ A modern, interactive shopping cart application built with React and TypeScript 
 - Responsive design
 - Product filtering and display
 - Persistent cart state
-
+- Use of api https://fakestoreapi.com/
 ## Getting Started
 
 ### Prerequisites
