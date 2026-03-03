@@ -20,8 +20,8 @@ import { useCartDispatch} from "../../hooks/context/ProductContext"
 export default function Product(data: ProductProp) {
     const dispatch = useCartDispatch();
 
-    function handleAddToCart(product: ProductProp) {
-        dispatch({type: "ADD", payload: product})
+    function handleAddToCart() {
+        dispatch({type: "ADD", payload: data})
     }
 
     return (
@@ -45,7 +45,7 @@ export default function Product(data: ProductProp) {
             <CardFooter className="flex items-center p-4 pt-0 justify-between">
                 <span className="text-xl font-bold">R{data.price}</span>
               
-                    <Button onClick={() => handleAddToCart(data)} variant="default" size="lg">
+                    <Button onClick={handleAddToCart} variant="default" size="lg">
                           <ShoppingCart >
                             Add to Cart
                           </ShoppingCart>

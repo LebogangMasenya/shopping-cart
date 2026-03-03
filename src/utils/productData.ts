@@ -9,6 +9,7 @@ export interface ProductProp {
         rate: number,
         count: number
     }
+    quantity?: number;
 }
 
 export interface ProductListProps {

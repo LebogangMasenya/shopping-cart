@@ -28,7 +28,7 @@ export default function ProductsPage() {
         <DrawerTrigger className="border border-black-500 bg-accent">View Cart</DrawerTrigger>
 
         <DrawerContent className="h-full w-400 ml-auto p-6">
-          <Cart products={products}/>
+          <Cart />
         </DrawerContent>
       </Drawer>
     </div>

@@ -42,7 +42,7 @@ export default function CartItem({ p }: { p: ProductProp }) {
             <div className="flex items-center justify-between mt-2">
                 <div className="flex items-center border rounded-md mr-1">
                     <Button onClick={handleDecrease} variant="ghost" size="icon" className="h-7 w-7 rounded-none">-</Button>
-                    <span className="text-xs w-6 text-center">1</span>
+                    <span className="text-xs w-6 text-center">{p.quantity || 1}</span>
                     <Button onClick={handleIncrease}  variant="ghost" size="icon" className="h-7 w-7 rounded-none">+</Button>
                 </div>
                 <Button onClick={handleRemoveFromCart}  variant="link" size="sm" className="h-auto p-0 text-destructive text-xs">
