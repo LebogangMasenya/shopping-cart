@@ -1,14 +1,61 @@
+import {
+    Card,
+    CardAction,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/ui/card"
+import { ShoppingCart } from "lucide-react";
+import {
+    Button,
+    buttonVariants
+} from "@/ui/button"
 
-export default function Product() {
+import { Badge } from "@/ui/badge"
+interface Product {
+    id: number;
+    title: string;
+    price: number;
+    description: string;
+    image: string;
+    category: string;
+    rating: {
+        rate: number,
+        count: number
+    }
+}
 
+export default function Product(data: Product) {
     return (
-        <div>
-            <div>Title</div>
-            <div>Price</div>
-            <div>Image</div>
-            <div>Discription</div>
-            <div>rating</div>
-            <div>Add to cart</div>
-        </div>
+        <Card className="overflow-hidden transition-all hover:shadow-lg m-2">
+            <CardHeader>
+                <div className="aspect-square relative bg-muted">
+                    <img src={data.image} alt={data.title} className="object-contain w-full h-full p-6" />
+
+                    <Badge className="absolute top-3 left-3"  variant="secondary">{data.category.toUpperCase()}</Badge>
+                </div>
+            </CardHeader>
+
+
+            <CardContent className="p-4">
+                <CardTitle className="font-semibold text-lg">{data.title}</CardTitle>
+                <CardDescription className="text-sm text-muted-foreground mt-2 line-clamp-2">
+                    {data.description}
+                </CardDescription>
+            </CardContent>
+
+            <CardFooter className="flex items-center p-4 pt-0 justify-between">
+                <span className="text-xl font-bold">R{data.price}</span>
+              
+                    <Button variant="default" size="lg">
+                          <ShoppingCart >
+                            Add to Cart
+                          </ShoppingCart>
+                    </Button>
+            
+            </CardFooter>
+        </Card>
     )
 }
