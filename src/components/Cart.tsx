@@ -1,23 +1,18 @@
-import { getProducts } from "../utils/productData";
 
 import {
     Card,
     CardHeader,
     CardContent,
-    CardDescription,
-    CardFooter,
-    CardTitle,
-    CardAction
+
 } from "@/ui/card"
 
 import {
     Button,
-    buttonVariants
 } from "@/ui/button"
 
-export default function Cart() {
-    const products = getProducts();
+import { type ProductListProps } from "../utils/productData";
 
+export default function Cart({ products }: ProductListProps) {
     return (
         <div className="flex flex-col h-full">
             <div className=" flex-1 overflow-y-auto py-6 space-y-4">
@@ -25,15 +20,15 @@ export default function Cart() {
                 <CardContent>
                     {products.map(p => (
                         <Card key={p.id} className="flex items-center gap-4 p-4 m-2">
-                           
-                                <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-md border bg-muted">
-                                    <img src={p.image} alt={p.title} className="h-full w-full object-contain p-2" />
-                                </div>
-                                <div className="flex flex-1 flex-col justify-between">
-                                    <h4 className="font-medium">{p.title}</h4>
-                                    <p className="text-sm text-muted-foreground">R{p.price}</p>
-                                </div>
-                       
+
+                            <div className="h-20 w-20 overflow-hidden rounded-md border bg-muted">
+                                <img src={p.image} alt={p.title} className="h-full w-full object-contain p-2" />
+                            </div>
+                            <div className="flex flex-1 flex-col justify-between">
+                                <h4 className="font-medium">{p.title}</h4>
+                                <p className="text-sm text-muted-foreground">R{p.price}</p>
+                            </div>
+
 
                             <div className="flex items-center justify-between mt-2">
                                 <div className="flex items-center border rounded-md mr-1">
@@ -46,21 +41,16 @@ export default function Cart() {
                                 </Button>
                             </div>
 
-
                         </Card>
                     ))}
                 </CardContent>
-
             </div>
-
 
             <div className="border-t pt-6 pb-2 bg-background">
                 <div className="flex justify-between text-base font-medium mb-4">
                     <span>Total</span>
                     <span>R{products.reduce((sum, p) => sum + p.price, 0)}</span>
                 </div>
-
-
             </div>
 
         </div>

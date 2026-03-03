@@ -1,13 +1,18 @@
-interface Product {
+export interface ProductProp {
     id: number;
     title: string;
     price: number;
     description: string;
     image: string;
+    category: string;
     rating: {
         rate: number,
         count: number
     }
+}
+
+export interface ProductListProps {
+  products: ProductProp[]; 
 }
 
 const BASE_SHOPPING_URL = import.meta.env.VITE_BASE_SHOPPING_URL;
