@@ -1,6 +1,5 @@
 import {
     Card,
-    CardAction,
     CardContent,
     CardDescription,
     CardFooter,
@@ -8,28 +7,25 @@ import {
     CardTitle,
 } from "@/ui/card"
 import { ShoppingCart } from "lucide-react";
+
 import {
     Button,
-    buttonVariants
 } from "@/ui/button"
 
 import { Badge } from "@/ui/badge"
-interface Product {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    image: string;
-    category: string;
-    rating: {
-        rate: number,
-        count: number
-    }
-}
+import { type ProductProp } from "../../utils/productData";
 
-export default function Product(data: Product) {
+import { useCartDispatch} from "../../hooks/context/ProductContext"
+
+export default function Product(data: ProductProp) {
+    const dispatch = useCartDispatch();
+
+    function handleAddToCart() {
+        dispatch({type: "ADD", payload: data})
+    }
+
     return (
-        <Card className="flex flex-col h-full overflow-hidden transition-all hover:shadow-lg m-2 ">
+        <Card className="flex flex-col h-full overflow-hidden transition-all hover:shadow-lg m-2">
             <CardHeader>
                 <div className="aspect-square relative bg-muted">
                     <img src={data.image} alt={data.title} className="object-contain w-full h-full p-6" />
@@ -49,7 +45,7 @@ export default function Product(data: Product) {
             <CardFooter className="flex items-center p-4 pt-0 justify-between">
                 <span className="text-xl font-bold">R{data.price}</span>
               
-                    <Button variant="default" size="lg">
+                    <Button onClick={handleAddToCart} variant="default" size="lg">
                           <ShoppingCart >
                             Add to Cart
                           </ShoppingCart>

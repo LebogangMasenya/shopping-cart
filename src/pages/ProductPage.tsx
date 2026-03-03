@@ -1,36 +1,27 @@
 
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
   DrawerTrigger,
 } from "@/ui/drawer"
 
-import {
-  Button
-} from "@/ui/button"
+import ProductList from "../components/Product/ProductList";
+import Cart from "../components/Cart/Cart";
 
-import ProductList from "../components/ProductList";
-import Cart from "../components/Cart";
-export default function ProductsPage() {
+export default  function ProductsPage() {
   return (
-    <div>
+    <div className="w-full ">
       <h1>Product Page</h1>
 
-      <ProductList />
+      <ProductList  />
 
-<Drawer direction="right">
-  <DrawerTrigger><Button>View Cart</Button></DrawerTrigger>
-  <DrawerContent className="h-full w-[400px] ml-auto p-6">
-   
-      <Cart />
-     
-      </DrawerContent>
-</Drawer>
+      <Drawer direction="right">
+        <DrawerTrigger className="border border-black-500 bg-accent">View Cart</DrawerTrigger>
+
+        <DrawerContent className="h-full w-400 ml-auto p-6">
+          <Cart />
+        </DrawerContent>
+      </Drawer>
     </div>
   );
 }
