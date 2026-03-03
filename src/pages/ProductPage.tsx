@@ -2,27 +2,18 @@
 import {
   Drawer,
   DrawerContent,
-
   DrawerTrigger,
 } from "@/ui/drawer"
 
 import ProductList from "../components/Product/ProductList";
 import Cart from "../components/Cart/Cart";
 
-import { getProducts } from "../utils/productData";
-
-export default function ProductsPage() {
-  
-
-    const products =  getProducts();
-
-   
- 
+export default  function ProductsPage() {
   return (
     <div className="w-full ">
       <h1>Product Page</h1>
 
-      <ProductList products={products} />
+      <ProductList  />
 
       <Drawer direction="right">
         <DrawerTrigger className="border border-black-500 bg-accent">View Cart</DrawerTrigger>
