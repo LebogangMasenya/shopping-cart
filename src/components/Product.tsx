@@ -29,7 +29,7 @@ interface Product {
 
 export default function Product(data: Product) {
     return (
-        <Card className="overflow-hidden transition-all hover:shadow-lg m-2">
+        <Card className="flex flex-col h-full overflow-hidden transition-all hover:shadow-lg m-2 ">
             <CardHeader>
                 <div className="aspect-square relative bg-muted">
                     <img src={data.image} alt={data.title} className="object-contain w-full h-full p-6" />
@@ -40,7 +40,7 @@ export default function Product(data: Product) {
 
 
             <CardContent className="p-4">
-                <CardTitle className="font-semibold text-lg">{data.title}</CardTitle>
+                <CardTitle className="font-semibold text-lg line-clamp-1">{data.title}</CardTitle>
                 <CardDescription className="text-sm text-muted-foreground mt-2 line-clamp-2">
                     {data.description}
                 </CardDescription>
