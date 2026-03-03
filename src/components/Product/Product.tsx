@@ -13,10 +13,17 @@ import {
 } from "@/ui/button"
 
 import { Badge } from "@/ui/badge"
-import { type ProductProp } from "../utils/productData";
+import { type ProductProp } from "../../utils/productData";
 
+import { useCartDispatch} from "../../hooks/context/ProductContext"
 
 export default function Product(data: ProductProp) {
+    const dispatch = useCartDispatch();
+
+    function handleAddToCart(product: ProductProp) {
+        dispatch({type: "ADD", payload: product})
+    }
+
     return (
         <Card className="flex flex-col h-full overflow-hidden transition-all hover:shadow-lg m-2">
             <CardHeader>
@@ -38,7 +45,7 @@ export default function Product(data: ProductProp) {
             <CardFooter className="flex items-center p-4 pt-0 justify-between">
                 <span className="text-xl font-bold">R{data.price}</span>
               
-                    <Button variant="default" size="lg">
+                    <Button onClick={() => handleAddToCart(data)} variant="default" size="lg">
                           <ShoppingCart >
                             Add to Cart
                           </ShoppingCart>

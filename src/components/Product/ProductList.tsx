@@ -4,8 +4,8 @@
 // show remove to cart
 // make it do backflips
 import Product from "./Product"
-import { type ProductListProps } from "../utils/productData";
-import { ProductContext } from "../hooks/context/ProductContext";
+import { type ProductListProps } from "../../utils/productData";
+
 
 
 export default function ProductList({products}: ProductListProps) {
