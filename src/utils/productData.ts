@@ -20,20 +20,20 @@ const BASE_SHOPPING_URL = import.meta.env.VITE_BASE_SHOPPING_URL;
 
 async function fetchProducts(): Promise<ProductProp[]> {
     const response = await fetch(BASE_SHOPPING_URL + "/products");
+
     if(response.ok) {
-        const data = await response.json();
-        return data;  
+        return response.json(); 
     } else {
         throw new Error("Failed to fetch products");
     }
 }
 
-export async function getProducts() : Promise<ProductProp[]> {
-  const dataArray = await fetchProducts(); 
+export async function getProducts()  {
+const [actualProducts] = await Promise.all([
+    fetchProducts()
+  ]);
 
-  dataArray.map((item: ProductProp) => { 
-    return item;
-  });
-
-  return dataArray;
+ 
+  return actualProducts.slice(0, 18);
 }
+

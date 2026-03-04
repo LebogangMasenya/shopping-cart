@@ -5,14 +5,14 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/ui/card"
+} from "../../ui/card"
 import { ShoppingCart } from "lucide-react";
 
 import {
     Button,
-} from "@/ui/button"
+} from "../../ui/button"
 
-import { Badge } from "@/ui/badge"
+import { Badge } from "../../ui/badge"
 import { type ProductProp } from "../../utils/productData";
 
 import { useCartDispatch} from "../../hooks/context/ProductContext"
@@ -45,13 +45,15 @@ export default function Product(data: ProductProp) {
             <CardFooter className="flex items-center p-4 pt-0 justify-between">
                 <span className="text-xl font-bold">R{data.price}</span>
               
-                    <Button onClick={handleAddToCart} variant="default" size="lg">
+                    <Button onClick={handleAddToCart} className="flex items-center gap-2 hover:skew-1" variant="default" size="lg">
                           <ShoppingCart >
                             Add to Cart
                           </ShoppingCart>
                     </Button>
             
             </CardFooter>
+            <div className="text-sm text-muted-foreground">Rating: {data.rating.rate} ({data.rating.count} reviews)</div>
+
         </Card>
     )
 }

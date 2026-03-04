@@ -23,4 +23,4 @@ export function useCartDispatch() {
   const context = useContext(CartDispatchContext);
   if (!context) throw new Error("useCartDispatch must be used within a CartProvider");
   return context;
-}
+} 
