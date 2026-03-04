@@ -7,14 +7,11 @@ import {
 
 import ProductList from "../components/Product/ProductList";
 import Cart from "../components/Cart/Cart";
-
+"use client"
 export default  function ProductsPage() {
   return (
     <div className="w-full ">
       <h1>Product Page</h1>
-
-      <ProductList  />
-
       <Drawer direction="right">
         <DrawerTrigger className="border border-black-500 bg-accent">View Cart</DrawerTrigger>
 
@@ -22,6 +19,10 @@ export default  function ProductsPage() {
           <Cart />
         </DrawerContent>
       </Drawer>
+      
+      <ProductList  />
+
+    
     </div>
   );
 }
