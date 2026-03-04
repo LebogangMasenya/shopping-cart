@@ -34,6 +34,6 @@ const [actualProducts] = await Promise.all([
   ]);
 
  
-  return actualProducts.slice(0, 10);
+  return actualProducts.slice(0, 18);
 }
 

@@ -1,12 +1,12 @@
 import {
     Card,
 
-} from "@/ui/card"
+} from "../../ui/card"
 
 import {
     Button
 
-} from "@/ui/button"
+} from "../../ui/button"
 
 import { type ProductProp } from "../../utils/productData";
 import { useCartDispatch } from "../../hooks/context/ProductContext";

@@ -5,9 +5,9 @@
 // make it do backflips
 import type { ProductProp } from "../../utils/productData";
 import Product from "./Product"
-import { Skeleton } from "@/ui/skeleton";
+import { Skeleton } from "../../ui/skeleton";
 import { getProducts} from "../../utils/productData";
-import {use} from "react"
+
 import { useState } from "react";
 
 export default function ProductList() {
