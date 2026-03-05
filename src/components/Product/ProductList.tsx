@@ -26,7 +26,7 @@ export default function ProductList() {
    return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-4 w-full">
          {!products ? (
-            [...Array(8)].map(( i) => (
+            [...Array(12)].map(( i) => (
                <Skeleton key={i}  className="flex h-150 w-full rounded-xl" />
             ))
          ) : ( 

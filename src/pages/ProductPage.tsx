@@ -6,15 +6,18 @@ import {
 } from "../ui/drawer"
 
 import { Button } from "../ui/button"
-import { ShoppingBag } from "lucide-react"
+import { Badge, ShoppingBag } from "lucide-react"
 import ProductList from "../components/Product/ProductList";
 import Cart from "../components/Cart/Cart";
+import { useCart } from "../hooks/context/ProductContext";
 "use client"
 export default  function ProductsPage() {
+   const cartItemsState = useCart();
+      const cartCount = cartItemsState.items.length;
   return (
 <div className="min-h-screen bg-slate-50/50">
       
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
+      <header className="sticky top-0 z-50 w-full border-b  bg-background/95 backdrop-blur">
         <div className="container flex h-16 items-center justify-between">
           <h1 className="text-xl font-bold tracking-tight">StyleStore</h1>
           
@@ -22,8 +25,10 @@ export default  function ProductsPage() {
             <Drawer direction="right">
               <DrawerTrigger asChild>
                 <Button variant="outline" className="relative gap-2">
-                  <ShoppingBag className="h-4 w-4" />
-                  <span>Cart</span>
+                  <Badge>
+                    <ShoppingBag className="h-4 w-4" />
+                  <span>{cartCount.toString()}</span>
+                  </Badge>
                 </Button>
               </DrawerTrigger>
               
@@ -37,7 +42,7 @@ export default  function ProductsPage() {
         </div>
       </header>
 
-      <main className="container py-8">
+      <main className="container py-8 w-7xl">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-2">
             <h2 className="text-3xl font-bold tracking-tight">Our Collection</h2>
