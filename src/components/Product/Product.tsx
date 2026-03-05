@@ -3,7 +3,6 @@ import {
     CardContent,
     CardDescription,
     CardFooter,
-    CardHeader,
     CardTitle,
 } from "../../ui/card"
 import { ShoppingCart, Star } from "lucide-react";
