@@ -34,7 +34,7 @@ export default function Product(data: ProductProp) {
                 <div className="gap-2 flex items-center justify-between">
                     <span>
                 <Badge 
-                    className="absolute text-black max-w-30 top-4 left-4 bg-white/20 backdrop-blur-md border-white/20  hover:bg-white/30 line-clamp-1" 
+                    className="absolute text-black max-w-27 top-4 left-4 bg-white/20 backdrop-blur-md border-white/20  hover:bg-white/30 line-clamp-1" 
                     variant="outline"
                 >
                     {data.category.toUpperCase()}
