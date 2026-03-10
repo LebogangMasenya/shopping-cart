@@ -5,25 +5,25 @@ import {
 
 import {
     Button
-
 } from "../../ui/button"
 
 import { type ProductProp } from "../../utils/productData";
-import { useCartDispatch } from "../../hooks/context/ProductContext";
+import { useAppDispatch } from "../../app/hooks";
+import {  increase_quantity, decrease_quantity, remove } from "../../feat/cart/cartSlice";
 
 export default function CartItem({ p }: { p: ProductProp }) {
-    const dispatch = useCartDispatch()
+    const dispatch = useAppDispatch();
 
     function handleRemoveFromCart() {
-        dispatch({ type: "REMOVE", payload: p })
+        dispatch(remove(p));
     }
 
     function handleIncrease() {
-        dispatch({ type: 'INCREASE_QUANTITY', payload: p })
+        dispatch(increase_quantity(p));
     }
 
     function handleDecrease() {
-        dispatch({ type: 'DECREASE_QUANTITY', payload: p })
+        dispatch(decrease_quantity(p))
     }
 
 

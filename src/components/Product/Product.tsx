@@ -13,14 +13,14 @@ import {
 
 import { Badge } from "../../ui/badge"
 import { type ProductProp } from "../../utils/productData";
-
-import { useCartDispatch } from "../../hooks/context/ProductContext"
+import { useAppDispatch } from "../../app/hooks";
+import { add } from "../../feat/cart/cartSlice";
 
 export default function Product(data: ProductProp) {
-    const dispatch = useCartDispatch();
+    const dispatch = useAppDispatch();
 
     function handleAddToCart() {
-        dispatch({ type: "ADD", payload: data })
+        dispatch(add(data))
     }
 
     return (

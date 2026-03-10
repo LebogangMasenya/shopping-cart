@@ -3,30 +3,27 @@
 // show add to cart
 // show remove to cart
 // make it do backflips
-import type { ProductProp } from "../../utils/productData";
 import Product from "./Product"
+import { useEffect } from "react";
 import { Skeleton } from "../../ui/skeleton";
-import { getProducts} from "../../utils/productData";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
-import { useState } from "react";
+import  { selectProducts , fetchProducts } from "../../feat/product/productSlice"
 
 export default function ProductList() {
-   const [products, setProducts] = useState<ProductProp[]>([]);
+   const dispatch = useAppDispatch();
+   const allProducts = useAppSelector(selectProducts);
+   const products = allProducts.products;
 
-   // needs to be async to fetch products from api: products = await getProducts(); 
-     async function handleFetchProducts() {
-         try {
-            setProducts(await getProducts())
-         }catch (error) {
-            console.error("error")
-         } 
-      }
+   useEffect(() => {
+      dispatch(fetchProducts())
+  }, [dispatch, products])
+
   
-     handleFetchProducts();
      
    return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-4 w-full">
-         {products.length === 0 ? (
+         {!products || products.length === 0 ? (
             [...Array(12)].map(( i) => (
                <Skeleton key={i}  className="flex h-150 w-full rounded-xl" />
             ))

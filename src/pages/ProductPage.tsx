@@ -9,12 +9,13 @@ import { Button } from "../ui/button"
 import { ShoppingBag } from "lucide-react"
 import ProductList from "../components/Product/ProductList";
 import Cart from "../components/Cart/Cart";
-import { useCart } from "../hooks/context/ProductContext";
+import { useAppSelector } from "../app/hooks";
+import { selectcart } from "../feat/cart/cartSlice"
 "use client"
 
 export default function ProductsPage() {
-  const cartItemsState = useCart();
-  const totalQuantity = cartItemsState.items.reduce((total, item) => total + (item.quantity || 1), 0);
+  const cartItemsState = useAppSelector(selectcart).cartItems;
+  const totalQuantity = cartItemsState.reduce((total, item) => total + (item.quantity || 1), 0);
 
   return (
     <div className="min-h-screen bg-slate-50/50">

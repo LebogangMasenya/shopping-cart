@@ -1,13 +1,14 @@
 import ProductsPage from './pages/ProductPage'
-import CartProvider from './hooks/provider/CartProvider'
 import './App.css'
-
+import {store} from "./app/store"
+import { Provider } from 'react-redux'
 function App() {
 
   return (
-    <CartProvider>
+    <Provider store={store}>
+
      <ProductsPage />
-    </CartProvider>
+     </Provider>
   )
 }
 
