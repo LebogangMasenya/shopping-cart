@@ -1,6 +1,6 @@
 # Shopping Cart App
 
-A modern, interactive shopping cart application built with React and TypeScript and a UI component library. Browse products, manage your cart, and see real-time updates of your total.
+A modern, interactive shopping cart application built with React and TypeScript, with Tailwind and Shadcn. Browse products, manage your cart, and see real-time updates of your total.
 
 ## What It Should Do
 
@@ -15,9 +15,8 @@ A modern, interactive shopping cart application built with React and TypeScript 
 - Clean, user-friendly interface
 - Real-time cart updates
 - Responsive design
-- Product filtering and display
 - Persistent cart state
-
+- Use of api https://fakestoreapi.com/ to fetch porudct data
 ## Getting Started
 
 ### Prerequisites
@@ -47,4 +46,17 @@ npm run build
 - **React** - UI framework
 - **TypeScript** - Type safety
 - **Vite** - Build tool
-- **CSS** - Styling
+- **Tailwind** - Styling
+- **Shadcn** - UI component library
+
+## Screens
+
+![Product page](./src/assets/screen1.png)
+
+![Cart component](./src/assets/screen2.png)
+
+
+## Lighthouse 
+![Lighthouse metrics](./src/assets/screen3.png)
+
+Performance is an issue as my API call takes long. To counter this, I used a `skeleton` component from Shadcn while loading products API. 
