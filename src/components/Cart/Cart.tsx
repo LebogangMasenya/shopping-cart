@@ -2,14 +2,12 @@
 import {
     CardHeader,
     CardContent,
-
 } from "../../ui/card"
 
 import { useAppSelector } from "../../app/hooks";
 import { selectcart } from "../../feat/cart/cartSlice";
 
 import CartItem from "./CartItem";
-import { useEffect } from "react";
 
 export default function Cart() {
     const cartItemsState = useAppSelector(selectcart)
@@ -17,10 +15,6 @@ export default function Cart() {
 
     const productCount =products.reduce((count, p) => count + (p.quantity || 1), 0);
     const productTotal = products.reduce((sum, p) => sum + p.price * (p.quantity || 1), 0).toFixed(2);
-
-    useEffect(()=>{
-console.log('cartItemsState', cartItemsState)
-    }, [products])
     
     return (
         <div className="flex flex-col h-full">

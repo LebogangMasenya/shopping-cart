@@ -4,22 +4,13 @@
 // show remove to cart
 // make it do backflips
 import Product from "./Product"
-import { useEffect } from "react";
 import { Skeleton } from "../../ui/skeleton";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
-import  { selectProducts , fetchProducts } from "../../feat/product/productSlice"
+import { useFetchAllProductsQuery } from "../../feat/product/productSlice";
+import type { ProductProp } from "../../utils/productData";
 
 export default function ProductList() {
-   const dispatch = useAppDispatch();
-   const allProducts = useAppSelector(selectProducts);
-   const products = allProducts.products;
-
-   useEffect(() => {
-      dispatch(fetchProducts())
-  }, [dispatch, products])
-
-  
+   const { data: products = [] } = useFetchAllProductsQuery(null)  ;
      
    return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-4 w-full">
@@ -28,7 +19,7 @@ export default function ProductList() {
                <Skeleton key={i}  className="flex h-150 w-full rounded-xl" />
             ))
          ) : ( 
-         products.map(p => (
+         products.map((p: ProductProp) => (
             <Product key={p.id} {...p} />
          ))
       )}

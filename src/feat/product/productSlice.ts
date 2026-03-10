@@ -1,19 +1,23 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import type { RootState } from '../../app/store'
 import { type ProductProp } from '../../utils/productData'
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 const BASE_SHOPPING_URL = import.meta.env.VITE_BASE_SHOPPING_URL;
 
 
-export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
-    const response = await fetch(`${BASE_SHOPPING_URL}/products`);
 
-    if (response.ok) {
-        return response.json();
-    } else {
-        throw new Error("Failed to fetch products");
-    }
-});
+
+ export const productApi = createApi({
+    reducerPath: 'productApi',
+    baseQuery: fetchBaseQuery({ baseUrl: `${BASE_SHOPPING_URL}/` }),
+    endpoints: (builder) => ({
+        fetchAllProducts: builder.query({
+            query: () => 'products',
+        }),
+    })
+})
+
 
 export interface ProductState {
     products: ProductProp[]
@@ -29,15 +33,6 @@ export const productSlice = createSlice({
     initialState,
     reducers: {
 
-    },
-    extraReducers: builder => {
-        builder
-            .addCase(fetchProducts.fulfilled, (state, action) => {
-                state.products = action.payload;
-            })
-            .addCase(fetchProducts.rejected, (state) => {
-                state.products = [];
-            })
     }
 })
 
@@ -45,5 +40,5 @@ export const productSlice = createSlice({
 export const { } = productSlice.actions
 
 export const selectProducts = (state: RootState) => state.products;
-
+export const { useFetchAllProductsQuery } = productApi;
 export default productSlice.reducer;
